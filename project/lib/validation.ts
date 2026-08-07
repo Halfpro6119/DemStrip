@@ -1,0 +1,3 @@
+import { z } from 'zod';
+export const enquirySchema = z.object({fullName:z.string().min(2,'Enter your name').max(100),company:z.string().max(120).optional().default(''),email:z.string().email('Enter a valid email').max(160),phone:z.string().min(7,'Enter a valid telephone number').max(30),projectType:z.string().min(1,'Select a project type'),projectLocation:z.string().min(2,'Enter a project location').max(160),projectDescription:z.string().min(20,'Please provide at least 20 characters').max(2000),preferredContactMethod:z.enum(['Phone','Email']).default('Phone'),consent:z.literal(true,{errorMap:()=>({message:'Consent is required'})}),website:z.string().max(0).optional()});
+export type Enquiry = z.infer<typeof enquirySchema>;
