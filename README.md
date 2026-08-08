@@ -12,7 +12,7 @@ Premium Next.js 14 redesign for DemStrip. Business content is centralised in `da
 
 - Update phone, address, email and company claims in `data/siteData.ts`.
 - Add or replace services and projects in the same file; images belong in `public/images/`.
-- Replace `demolition-development-concept.png` with approved DemStrip photography before launch.
+- Replace placeholder photography in `public/images/` with approved DemStrip imagery before launch.
 - Add only approved, attributable testimonials and accreditation information.
 
 ## Contact form

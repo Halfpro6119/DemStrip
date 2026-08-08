@@ -1,5 +1,104 @@
 'use client';
-import {useEffect} from 'react';import {useForm} from 'react-hook-form';import {zodResolver} from '@hookform/resolvers/zod';import {enquirySchema,Enquiry} from '@/lib/validation';import {services} from '@/data/siteData';
-const key='demstrip_quote_form_v1';const fields=['fullName','company','email','phone','projectType','projectLocation','projectDescription','preferredContactMethod'] as const;
-export function ContactForm(){const {register,handleSubmit,formState:{errors,isSubmitting},watch,reset,setValue}=useForm<Enquiry>({resolver:zodResolver(enquirySchema),defaultValues:{preferredContactMethod:'Phone',company:'',website:''}});useEffect(()=>{try{const saved=localStorage.getItem(key);if(saved){const x=JSON.parse(saved);fields.forEach(k=>x[k]!==undefined&&setValue(k,x[k]));}}catch{}},[setValue]);useEffect(()=>{const sub=watch((v:Partial<Enquiry>)=>{const safe=Object.fromEntries(fields.map(k=>[k,v[k]]));const timer=setTimeout(()=>localStorage.setItem(key,JSON.stringify(safe)),350);return()=>clearTimeout(timer)});return()=>sub.unsubscribe()},[watch]);const submit=async(data:Enquiry)=>{const r=await fetch('/api/contact',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});if(!r.ok)throw new Error();localStorage.removeItem(key);reset();alert('Thank you. Your enquiry has been sent.');};const input='mt-1 w-full border border-white/20 bg-white/5 px-4 py-3 text-white outline-none focus:border-amber';return <form onSubmit={handleSubmit(submit)} className="grid gap-5"><div className="grid gap-5 md:grid-cols-2"><Field label="Full name *" error={errors.fullName?.message}><input className={input}{...register('fullName')}/></Field><Field label="Company" error={errors.company?.message}><input className={input}{...register('company')}/></Field><Field label="Email *" error={errors.email?.message}><input type="email" className={input}{...register('email')}/></Field><Field label="Telephone *" error={errors.phone?.message}><input type="tel" className={input}{...register('phone')}/></Field><Field label="Project type *" error={errors.projectType?.message}><select className={input}{...register('projectType')}><option value="">Select a service</option>{services.map(s=><option key={s.slug}>{s.title}</option>)}</select></Field><Field label="Project location *" error={errors.projectLocation?.message}><input className={input}{...register('projectLocation')}/></Field></div><Field label="Project description *" error={errors.projectDescription?.message}><textarea rows={6} className={input}{...register('projectDescription')}/></Field><Field label="Preferred contact method" error={errors.preferredContactMethod?.message}><select className={input}{...register('preferredContactMethod')}><option>Phone</option><option>Email</option></select></Field><div className="hidden"><input tabIndex={-1} autoComplete="off" {...register('website')}/></div><label className="flex gap-3 text-sm text-white/70"><input type="checkbox" {...register('consent')}/> I consent to DemStrip using these details to respond to my enquiry.</label>{errors.consent&&<p className="text-sm text-amber">{errors.consent.message}</p>}<button disabled={isSubmitting} className="w-fit bg-amber px-6 py-4 text-xs font-extrabold tracking-widest text-coal disabled:opacity-60">{isSubmitting?'SENDING…':'SEND ENQUIRY'}</button></form>}
-function Field({label,error,children}:{label:string;error?:string;children:React.ReactNode}){return <label className="text-sm font-bold">{label}{children}{error&&<span className="mt-1 block text-xs text-amber">{error}</span>}</label>}
+import { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Send } from 'lucide-react';
+import { enquirySchema, Enquiry } from '@/lib/validation';
+import { services } from '@/data/siteData';
+
+const key = 'demstrip_quote_form_v1';
+const fields = ['fullName', 'company', 'email', 'phone', 'projectType', 'projectLocation', 'projectDescription', 'preferredContactMethod'] as const;
+
+export function ContactForm() {
+  const { register, handleSubmit, formState: { errors, isSubmitting }, watch, reset, setValue } = useForm<Enquiry>({
+    resolver: zodResolver(enquirySchema),
+    defaultValues: { preferredContactMethod: 'Phone', company: '', website: '' }
+  });
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        const x = JSON.parse(saved);
+        fields.forEach(k => x[k] !== undefined && setValue(k, x[k]));
+      }
+    } catch { /* ignore */ }
+  }, [setValue]);
+
+  useEffect(() => {
+    const sub = watch((v: Partial<Enquiry>) => {
+      const safe = Object.fromEntries(fields.map(k => [k, v[k]]));
+      const timer = setTimeout(() => localStorage.setItem(key, JSON.stringify(safe)), 350);
+      return () => clearTimeout(timer);
+    });
+    return () => sub.unsubscribe();
+  }, [watch]);
+
+  const submit = async (data: Enquiry) => {
+    const r = await fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error();
+    localStorage.removeItem(key);
+    reset();
+    alert('Thank you. Your enquiry has been sent.');
+  };
+
+  const input = 'mt-1.5 w-full border border-white/20 bg-white/5 px-4 py-3 text-white outline-none transition focus:border-amber focus:bg-white/[.04]';
+
+  return (
+    <form onSubmit={handleSubmit(submit)} className="grid gap-5">
+      <div className="grid gap-5 md:grid-cols-2">
+        <Field label="Full name" required error={errors.fullName?.message}>
+          <input className={input} {...register('fullName')} />
+        </Field>
+        <Field label="Company" error={errors.company?.message}>
+          <input className={input} {...register('company')} />
+        </Field>
+        <Field label="Email" required error={errors.email?.message}>
+          <input type="email" className={input} {...register('email')} />
+        </Field>
+        <Field label="Telephone" required error={errors.phone?.message}>
+          <input type="tel" className={input} {...register('phone')} />
+        </Field>
+        <Field label="Project type" required error={errors.projectType?.message}>
+          <select className={input} {...register('projectType')}>
+            <option value="">Select a service</option>
+            {services.map(s => <option key={s.slug}>{s.title}</option>)}
+          </select>
+        </Field>
+        <Field label="Project location" required error={errors.projectLocation?.message}>
+          <input className={input} {...register('projectLocation')} />
+        </Field>
+      </div>
+      <Field label="Project description" required error={errors.projectDescription?.message}>
+        <textarea rows={6} className={`${input} resize-none`} {...register('projectDescription')} />
+      </Field>
+      <Field label="Preferred contact method" error={errors.preferredContactMethod?.message}>
+        <select className={input} {...register('preferredContactMethod')}>
+          <option>Phone</option>
+          <option>Email</option>
+        </select>
+      </Field>
+      <div className="hidden">
+        <input tabIndex={-1} autoComplete="off" {...register('website')} />
+      </div>
+      <label className="flex cursor-pointer gap-3 text-sm text-white/70">
+        <input type="checkbox" className="mt-1 h-4 w-4 accent-amber" {...register('consent')} />
+        <span>I consent to DemStrip using these details to respond to my enquiry.</span>
+      </label>
+      {errors.consent && <p className="text-sm text-amber">{errors.consent.message}</p>}
+      <button disabled={isSubmitting} className="mt-1 inline-flex w-fit items-center gap-2 bg-amber px-6 py-4 text-xs font-extrabold tracking-widest text-coal transition hover:bg-white disabled:opacity-60">
+        {isSubmitting ? 'SENDING…' : <>SEND ENQUIRY <Send size={15} /></>}
+      </button>
+    </form>
+  );
+}
+
+function Field({ label, required, error, children }: { label: string; required?: boolean; error?: string; children: React.ReactNode }) {
+  return (
+    <label className="block text-sm font-bold text-white/85">
+      <span>{label}{required && <span className="ml-1 text-amber">*</span>}</span>
+      {children}
+      {error && <span className="mt-1 block text-xs text-amber">{error}</span>}
+    </label>
+  );
+}
