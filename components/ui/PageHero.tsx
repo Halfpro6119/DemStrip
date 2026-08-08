@@ -4,7 +4,7 @@ import { company } from '@/data/siteData';
 export function PageHero({ eyebrow, title, copy }: { eyebrow: string; title: string; copy: string }) {
   return (
     <section className="page-hero relative isolate overflow-hidden border-b border-white/10 pt-20">
-      <Image src={company.image} alt="DemStrip demolition work in progress" fill priority sizes="100vw" quality={80} className="-z-20 object-cover opacity-30" />
+      <Image src={company.image} alt="DemStrip demolition work in progress" fill priority sizes="100vw" quality={90} className="-z-20 object-cover opacity-30" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#111315_0%,rgba(17,19,21,.9)_48%,rgba(17,19,21,.5)_100%)]" />
       <div className="absolute inset-y-0 right-[12%] -z-10 w-px bg-white/10" />
       <div className="relative mx-auto max-w-[1440px] px-5 py-24 lg:px-10 lg:py-36">

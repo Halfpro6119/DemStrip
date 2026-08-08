@@ -15,7 +15,7 @@ export default function AsbestosRemoval() {
   return (
     <>
       <section className="relative isolate overflow-hidden border-b border-white/10 pt-20">
-        <Image src="/images/asbestos-removal.webp" alt="Corrugated asbestos cement roof" fill priority sizes="100vw" quality={85} className="-z-20 object-cover object-center opacity-45" />
+        <Image src="/images/asbestos-removal.jpg" alt="Corrugated asbestos cement roof" fill priority sizes="100vw" quality={90} className="-z-20 object-cover object-center opacity-45" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,#111315_0%,rgba(17,19,21,.92)_46%,rgba(17,19,21,.45)_100%)]" />
         <div className="relative mx-auto max-w-[1440px] px-5 py-24 lg:px-10 lg:py-36">
           <p className="eyebrow">Specialists in</p>
@@ -71,7 +71,7 @@ export default function AsbestosRemoval() {
       </Section>
 
       <section className="relative overflow-hidden border-y border-white/10 bg-[#181b1e]">
-        <Image src="/images/asbestos-removal.webp" alt="Asbestos cement roof surface" fill sizes="100vw" quality={75} className="object-cover opacity-15" />
+        <Image src="/images/asbestos-removal.jpg" alt="Asbestos cement roof surface" fill sizes="100vw" quality={80} className="object-cover opacity-15" />
         <div className="relative">
           <Section className="py-24 lg:py-32">
             <p className="eyebrow">Speak to a specialist</p>

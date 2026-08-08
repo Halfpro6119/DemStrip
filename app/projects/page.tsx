@@ -20,7 +20,7 @@ export default function Projects() {
           {projects.map(p => (
             <Link key={p.slug} href={`/projects/${p.slug}`} className="group grid overflow-hidden border border-white/10 bg-steel transition hover:border-amber/40 lg:grid-cols-[1.25fr_.75fr]">
               <div className="relative min-h-[280px] overflow-hidden sm:min-h-[360px]">
-                <Image src={p.image} alt="DemStrip demolition work" fill sizes="(max-width: 1024px) 100vw, 63vw" quality={80} loading="lazy" className="object-cover opacity-70 transition duration-700 group-hover:scale-[1.04]" />
+                <Image src={p.image} alt="DemStrip demolition work" fill sizes="(max-width: 1024px) 100vw, 63vw" quality={88} loading="lazy" className="object-cover opacity-70 transition duration-700 group-hover:scale-[1.04]" />
                 <div className="absolute inset-0 bg-gradient-to-t from-coal/75 to-transparent" />
                 <div className="absolute bottom-5 left-5 flex items-center gap-2 text-xs font-bold tracking-[.18em] text-amber opacity-0 transition group-hover:opacity-100">
                   <ArrowUpRight size={16} /> VIEW PROJECT

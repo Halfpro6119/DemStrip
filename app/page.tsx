@@ -11,7 +11,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="hero-grid relative min-h-[620px] overflow-hidden border-b border-white/10 lg:min-h-[800px]">
-        <Image src={company.image} alt="DemStrip demolition machinery at work" fill priority sizes="100vw" quality={85} className="object-cover object-[68%_center]" />
+        <Image src={company.image} alt="DemStrip demolition machinery at work" fill priority sizes="100vw" quality={90} className="object-cover object-[68%_center]" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,#111315_0%,rgba(17,19,21,.92)_32%,rgba(17,19,21,.48)_65%,rgba(17,19,21,.26)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-coal to-transparent" />
         <div className="relative mx-auto flex min-h-[620px] max-w-[1440px] items-end px-5 pb-12 pt-32 lg:min-h-[800px] lg:px-10 lg:pb-16">
@@ -90,7 +90,7 @@ export default function Home() {
       <Section>
         <div className="grid overflow-hidden border border-white/10 lg:grid-cols-[1.3fr_.7fr]">
           <div className="relative min-h-[440px]">
-            <Image src={projects[0].image} alt="DemStrip demolition project" fill sizes="(max-width: 1024px) 100vw, 65vw" quality={85} className="object-cover opacity-70" />
+            <Image src={projects[0].image} alt="DemStrip demolition project" fill sizes="(max-width: 1024px) 100vw, 65vw" quality={88} className="object-cover opacity-70" />
             <div className="absolute inset-0 bg-gradient-to-t from-coal via-transparent" />
             <div className="absolute bottom-0 p-8">
               <p className="eyebrow">03 / Selected work</p>
@@ -171,7 +171,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="relative overflow-hidden">
-        <Image src={company.image} alt="DemStrip demolition machinery at work" fill sizes="100vw" quality={80} className="object-cover opacity-30" />
+        <Image src={company.image} alt="DemStrip demolition machinery at work" fill sizes="100vw" quality={85} className="object-cover opacity-30" />
         <div className="relative bg-coal/80">
           <Section className="py-32">
             <p className="eyebrow">Start the conversation</p>

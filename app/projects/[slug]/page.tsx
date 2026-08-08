@@ -17,7 +17,7 @@ export default function Project({ params }: { params: { slug: string } }) {
   return (
     <>
       <section className="relative isolate overflow-hidden pt-20">
-        <Image src={project.image} alt="DemStrip demolition work" fill priority sizes="100vw" quality={85} className="-z-20 object-cover object-center opacity-50" />
+        <Image src={project.image} alt="DemStrip demolition work" fill priority sizes="100vw" quality={90} className="-z-20 object-cover object-center opacity-50" />
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-coal via-coal/40 to-transparent" />
         <div className="relative mx-auto max-w-[1440px] px-5 pb-12 pt-32 lg:px-10 lg:pb-16 lg:pt-40">
           <p className="eyebrow">{project.category} / {project.location}</p>

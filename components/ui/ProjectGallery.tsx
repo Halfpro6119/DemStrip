@@ -180,7 +180,7 @@ export function ProjectGallery({ images, gridClassName }: ProjectGalleryProps) {
                       alt={`DemStrip project photograph ${selected + 1}`}
                       fill
                       sizes="(max-width: 1080px) 92vw, 1080px"
-                      quality={85}
+                      quality={92}
                       className="select-none object-contain transition-transform duration-300 ease-out"
                       style={{ transform: `scale(${zoom})` }}
                       priority
