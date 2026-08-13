@@ -3,7 +3,7 @@
 ## Research
 
 - Attempted to crawl `http://demstrip.co.uk/` and `https://demstrip.co.uk/` on 7 August 2026; the crawler returned an internal error.
-- Verified via Yell that DemStrip is family-run, Norwich-based, has 25+ years of experience and offers deconstruction, demolition and site clearance. MyWorkman supports nationwide coverage and additionally lists dismantling, strip-out, asbestos removal and site clearance. Yell verified telephone: 07818 543875. Wastebook lists the Anson Road address.
+- Verified via public listings that DemStrip is family-run, Norwich-based, has 25+ years of experience and offers deconstruction, demolition and site clearance. MyWorkman supports nationwide coverage and additionally lists dismantling, strip-out, asbestos removal and site clearance. Real contact details are intentionally omitted from this demo branch.
 - No accreditations, project details, email address, company photography, client names or case-study facts were verified; the application explicitly marks these for confirmation.
 
 ## Implementation
